@@ -43,10 +43,10 @@ public class ArcadeDrive extends CommandBase {
     @Override
     @SuppressWarnings("unused")
     public void execute() {
-        double leftXValue = -leftXSupplier.get();
-        double leftYValue = -leftYSupplier.get();
-        double rightXValue = -rightXSupplier.get();
-        double rightYValue = -rightYSupplier.get();
+        double leftXValue = leftXSupplier.get();
+        double leftYValue = leftYSupplier.get();
+        double rightXValue = rightXSupplier.get();
+        double rightYValue = rightYSupplier.get();
         double mult = 1;
         double forwardSpeed;
         double turnSpeed;

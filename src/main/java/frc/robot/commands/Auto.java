@@ -6,7 +6,7 @@ import frc.robot.subsystems.drivetrain.DriveBase;
 public class Auto extends ParallelCommandGroup {
 
     public Auto(DriveBase drive) {
-        addCommands(new DriveStraight(drive, -0.25));
+        addCommands(new DriveStraight(drive, 0.25));
     }
 
 }

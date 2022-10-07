@@ -11,7 +11,8 @@ public class DriveIOBRB implements DriveIO {
         this.leftMotors = new VictorSP(0);
         this.rightMotors = new VictorSP(1);
 
-        leftMotors.setInverted(true);
+        leftMotors.setInverted(false);
+        rightMotors.setInverted(true);
     }
 
     @Override
