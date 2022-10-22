@@ -1,27 +1,27 @@
 package frc.robot.subsystems.drivetrain;
 
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class DriveIOBRB implements DriveIO {
 
-    public VictorSP leftMotors;
-    public VictorSP rightMotors;
+    public WPI_TalonSRX leftMotors;
+    public WPI_TalonSRX rightMotors;
 
     public DriveIOBRB() {
-        this.leftMotors = new VictorSP(0);
-        this.rightMotors = new VictorSP(1);
+        this.leftMotors = new WPI_TalonSRX(0);
+        this.rightMotors = new WPI_TalonSRX(1);
 
         leftMotors.setInverted(false);
         rightMotors.setInverted(true);
     }
 
     @Override
-    public VictorSP getLeftMotor() {
+    public WPI_TalonSRX getLeftMotors() {
         return leftMotors;
     }
 
     @Override
-    public VictorSP getRightMotor() {
+    public WPI_TalonSRX getRightMotors() {
         return rightMotors;
     }
 

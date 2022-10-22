@@ -1,16 +1,23 @@
 package frc.robot.subsystems.climber;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class ClimberIOBRB implements ClimberIO {
 
-    private final VictorSP upControl;
-    private final Spark downControl;
+    private final WPI_TalonSRX upControl;
+    private final WPI_TalonSRX downControl1;
+    private final WPI_TalonSRX downControl2;
+    private final MotorControllerGroup downControl;
 
     public ClimberIOBRB() {
-        this.upControl = new VictorSP(3);
-        this.downControl = new Spark(4);
+        this.upControl = new WPI_TalonSRX(3);
+        this.downControl1 = new WPI_TalonSRX(4);
+        this.downControl2 = new WPI_TalonSRX(5);
+        downControl2.setInverted(true);
+        downControl = new MotorControllerGroup(downControl1, downControl2);
+
     }
 
     @Override
@@ -20,6 +27,7 @@ public class ClimberIOBRB implements ClimberIO {
             downControl.set(velocity);
         } else if (velocity < 0) {
             downControl.set(velocity);
+            upControl.set(velocity);
         }
     }
 

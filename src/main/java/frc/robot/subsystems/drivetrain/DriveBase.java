@@ -1,23 +1,24 @@
 package frc.robot.subsystems.drivetrain;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveBase extends SubsystemBase {
 
     private final DriveIO driveIO;
-    private final VictorSP left;
-    private final VictorSP right;
+    private final WPI_TalonSRX left;
+    private final WPI_TalonSRX right;
 
     public DifferentialDrive driveBase;
 
     public DriveBase(DriveIO driveIO) {
         this.driveIO = driveIO;
 
-        this.left = driveIO.getLeftMotor();
-        this.right = driveIO.getRightMotor();
+        this.left = driveIO.getLeftMotors();
+        this.right = driveIO.getRightMotors();
 
         this.driveBase = new DifferentialDrive(left, right);
     }

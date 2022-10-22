@@ -1,14 +1,14 @@
 package frc.robot.subsystems.drivetrain;
 
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public interface DriveIO {
 
-    public default VictorSP getLeftMotor() {
+    public default WPI_TalonSRX getLeftMotors() {
         return null;
     }
 
-    public default VictorSP getRightMotor() {
+    public default WPI_TalonSRX getRightMotors() {
         return null;
     }
 

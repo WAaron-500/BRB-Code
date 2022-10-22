@@ -11,7 +11,6 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.Auto;
 import frc.robot.commands.ClimberDown;
 import frc.robot.commands.ClimberUp;
-import frc.robot.commands.IntakeRun;
 import frc.robot.oi.MatthewControls;
 import frc.robot.oi.UserControls;
 import frc.robot.subsystems.climber.Climber;
@@ -20,9 +19,6 @@ import frc.robot.subsystems.climber.ClimberIOBRB;
 import frc.robot.subsystems.drivetrain.DriveBase;
 import frc.robot.subsystems.drivetrain.DriveIO;
 import frc.robot.subsystems.drivetrain.DriveIOBRB;
-import frc.robot.subsystems.intake.Intake;
-import frc.robot.subsystems.intake.IntakeIO;
-import frc.robot.subsystems.intake.IntakeIOBRB;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,7 +29,6 @@ import frc.robot.subsystems.intake.IntakeIOBRB;
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
     private DriveBase driveBase;
-    private Intake intake;
     private Climber climb;
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -45,13 +40,10 @@ public class RobotContainer {
 
     private void configureSubsystems() {
         this.driveBase = new DriveBase(new DriveIOBRB());
-        this.intake = new Intake(new IntakeIOBRB());
         this.climb = new Climber(new ClimberIOBRB());
 
         //fail safes because they are pretty
         driveBase = driveBase != null ? driveBase : new DriveBase(new DriveIO() {
-        });
-        intake = intake != null ? intake : new Intake(new IntakeIO() {
         });
         climb = climb != null ? climb : new Climber(new ClimberIO() {
         });
@@ -74,9 +66,6 @@ public class RobotContainer {
                 () -> controls.getRightDriveX(),
                 () -> controls.getRightDriveY());
 
-        IntakeRun intakeInCommand = new IntakeRun(intake, () -> 1.0);
-        IntakeRun intakeOutCommand = new IntakeRun(intake, () -> -1.0);
-
         // ClimberUpBitch climberUpCommand = new ClimberUpBitch(climb, 0.3);
         // ClimberUpBitch climberDownCommand = new ClimberUpBitch(climb, -0.3);
         // ClimberDownBitch climberLeftCommand = new ClimberDownBitch(climb, 0.3);
@@ -86,8 +75,6 @@ public class RobotContainer {
         ClimberDown climberDownCommand = new ClimberDown(climb, 0.7);
 
         //controller commands
-        controls.getIntakeRunInButton().whileActiveOnce(intakeInCommand);
-        controls.getIntakeRunOutButton().whileActiveOnce(intakeOutCommand);
         controls.ClimbUpButton().whileActiveOnce(climberUpCommand);
         controls.ClimbDownButton().whileActiveOnce(climberDownCommand);
         // controls.ClimbLeftButton().whileActiveOnce(climberLeftCommand);
