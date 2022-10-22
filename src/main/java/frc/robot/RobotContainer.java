@@ -11,8 +11,8 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.Auto;
 import frc.robot.commands.ClimberDown;
 import frc.robot.commands.ClimberUp;
-import frc.robot.oi.MatthewControls;
 import frc.robot.oi.UserControls;
+import frc.robot.oi.XeniteControls;
 import frc.robot.subsystems.climber.Climber;
 import frc.robot.subsystems.climber.ClimberIO;
 import frc.robot.subsystems.climber.ClimberIOBRB;
@@ -57,7 +57,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         // UserControls controls = new XeniteControls(0);
-        UserControls controls = new MatthewControls(0, 1);
+        UserControls controls = new XeniteControls(0);
 
         //defining commands
         ArcadeDrive defaultDriveCommand = new ArcadeDrive(driveBase,

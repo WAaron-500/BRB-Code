@@ -17,10 +17,11 @@ public class DriveBase extends SubsystemBase {
     public DriveBase(DriveIO driveIO) {
         this.driveIO = driveIO;
 
-        this.left = driveIO.getLeftMotors();
-        this.right = driveIO.getRightMotors();
+        this.left = driveIO.getLeftLeader();
+        this.right = driveIO.getRightLeader();
 
         this.driveBase = new DifferentialDrive(left, right);
+
     }
 
     @Override
